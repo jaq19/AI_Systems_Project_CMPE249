@@ -4,9 +4,13 @@ Your repository must include an initial README.md containing the following: titl
 # **Title:** Does a Post-Hoc, Model-Agnostic Safety Monitor Reduce VLA Safety Violations on LIBERO-Safety?
 
 **Team:** Jose A Quinteros
+
 **Track:** Research 
+
 **Lane:** Safety and Evaluation
+
 **Team:** Solo
+
 **Hardware scope:** Simulation/benchmark only (MuJoCo-based, via LIBERO-Safety)
 
 ## Abstract
