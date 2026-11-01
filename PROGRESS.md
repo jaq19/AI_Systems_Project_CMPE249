@@ -30,3 +30,14 @@ Start every session with: source ~/project/start.sh
    zero-shot is 75.7% -> 360/arm detects 10pp. Source: paper v2 Tables 6 and A.10)
 - One monitor: consistency + progress. No uncertainty variant.
 - Two suites. Three thresholds. Two seeds.
+
+## Second root cause: mujoco version too new for robosuite 1.4
+Symptom: AssertionError at robosuite/utils/binding_utils.py:521
+  assert joint_type in (mjJNT_HINGE, mjJNT_SLIDE)   <- fired on a Panda hinge joint
+Cause: newer mujoco bindings changed joint-type enum comparison semantics, so
+robosuite 1.4's `==` / `in` checks stop matching. requirements.txt pins no
+mujoco version, so the dependency cascade installed the latest.
+Fix: downgrade mujoco to robosuite-1.4's pin (2.3.x).
+
+PINNED ENVIRONMENT (do not let pip upgrade these):
+  python 3.10 | numpy 1.26.4 | gym 0.25.2 | robosuite 1.4.0 | mujoco 2.3.x
