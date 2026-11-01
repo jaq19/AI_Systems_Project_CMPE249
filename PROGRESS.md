@@ -41,3 +41,28 @@ Fix: downgrade mujoco to robosuite-1.4's pin (2.3.x).
 
 PINNED ENVIRONMENT (do not let pip upgrade these):
   python 3.10 | numpy 1.26.4 | gym 0.25.2 | robosuite 1.4.0 | mujoco 2.3.x
+
+### Servo-test findings (C25) - two things to check FIRST next session
+1. ACTION SPACE IS NOT WHAT WE ASSUMED.
+   Proportional position commands (clip(delta*8, -0.25, 0.25)) did not track:
+   distance oscillated 0.235 -> 0.760 -> 0.576 -> 0.766, never converging.
+   A delta-position controller capped at 0.25 cannot move 0.5 m in 20 steps.
+   Hypothesis: controller has control_delta=False, i.e. the first 3 action
+   components are an ABSOLUTE target position in the robot base frame.
+   ACTION: print env.env.robots[0].controller_config (type, control_delta,
+   input_max/min, output_max/min) BEFORE writing the Day 3 policy wrapper.
+   This matters a lot: a wrong action convention makes pi-0.5 look broken.
+
+2. white_place_box_1 IS A FIXTURE, NOT AN OBJECT.
+   obs has no 'white_place_box_1_pos' -> KeyError. Only bottle_of_perfume_1 is
+   trackable from observations. Implication for monitor design: one of the two
+   declared hazards is invisible to anything that reads obs alone. Hazard poses
+   must come from the sim (sim.data.body_xpos / geom positions), not obs.
+
+### Validation plan for "has a violation ever actually fired?"
+Still unproven. Cap any further servo work at ~20 minutes next session.
+Cheaper path: published zero-shot pi-0.5 collision rate on this benchmark is
+75.7%, so Day 4's first real episode is MORE LIKELY THAN NOT to produce a
+violation on its own. If the servo test does not fire quickly, defer validation
+to Day 4 rather than spending schedule on a synthetic test.
+Do NOT trust a run of all-zero costs until a violation has fired at least once.
