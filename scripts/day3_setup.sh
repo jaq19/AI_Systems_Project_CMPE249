@@ -21,7 +21,6 @@ fi
 cd openpi
 git fetch -q origin && git checkout -q 215abfb || echo "(pin failed; using current HEAD)"
 GIT_LFS_SKIP_SMUDGE=1 uv sync
-GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
 
 # 3. the client, inside the LIBERO env (whatever python start.sh activates)
 python -m pip install -e ~/project/openpi/packages/openpi-client
