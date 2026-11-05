@@ -47,6 +47,25 @@ def make_element(obs, instruction, resize=224):
             "observation/state": state, "prompt": str(instruction)}
 
 
+def _disable_ws_keepalive():
+    """openpi's server runs policy.infer() inside its asyncio loop, so while the
+    model JIT-compiles on the first call (30-120 s) it can't answer websocket
+    keepalive pings. websockets>=14 sync clients ping every 20 s and drop the
+    connection after a 20 s timeout ("1011 keepalive ping timeout"). Turn the
+    client's pings off. Results are unaffected; this is transport only."""
+    import websockets.sync.client as wsc
+    if getattr(wsc.connect, "_vla_no_keepalive", False):
+        return
+    orig = wsc.connect
+
+    def connect(*a, **k):
+        k.setdefault("ping_interval", None)
+        return orig(*a, **k)
+
+    connect._vla_no_keepalive = True
+    wsc.connect = connect
+
+
 class Pi05Policy:
     """act(obs) -> (replan_steps, 7) array of actions to execute now.
     After each act(), self.last_chunk holds the full 10-step chunk and
@@ -56,6 +75,7 @@ class Pi05Policy:
     consistency monitor needs."""
 
     def __init__(self, host="127.0.0.1", port=8000, replan_steps=5):
+        _disable_ws_keepalive()
         from openpi_client import websocket_client_policy
         self.client = websocket_client_policy.WebsocketClientPolicy(host, port)
         self.metadata = self.client.get_server_metadata()
