@@ -1,0 +1,42 @@
+   Building openpi @ file:///home/ubuntu/project/openpi
+   Building openpi-client @ file:///home/ubuntu/project/openpi/packages/openpi-client
+      Built openpi-client @ file:///home/ubuntu/project/openpi/packages/openpi-client
+      Built openpi @ file:///home/ubuntu/project/openpi
+Uninstalled 2 packages in 3ms
+Installed 2 packages in 66ms
+INFO:root:Loading model...
+INFO:2026-11-06 05:34:00,303:jax._src.xla_bridge:925: Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:jax._src.xla_bridge:Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:2026-11-06 05:34:00,308:jax._src.xla_bridge:925: Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+INFO:jax._src.xla_bridge:Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+INFO:absl:orbax-checkpoint version: 0.11.13
+INFO:absl:Created BasePyTreeCheckpointHandler: use_ocdbt=True, use_zarr3=False, pytree_metadata_options=PyTreeMetadataOptions(support_rich_types=False), array_metadata_store=<orbax.checkpoint._src.metadata.array_metadata_store.Store object at 0x7e4f0ef9fed0>
+INFO:absl:Restoring checkpoint from /home/ubuntu/.cache/openpi/openpi-assets/checkpoints/pi05_libero/params.
+INFO:absl:[thread=MainThread] Failed to get flag value for EXPERIMENTAL_ORBAX_USE_DISTRIBUTED_PROCESS_ID.
+INFO:absl:[process=0] /jax/checkpoint/read/bytes_per_sec: 521.4 MiB/s (total bytes: 6.2 GiB) (time elapsed: 12 seconds) (per-host)
+INFO:absl:Finished restoring checkpoint in 12.27 seconds from /home/ubuntu/.cache/openpi/openpi-assets/checkpoints/pi05_libero/params.
+INFO:root:Norm stats not found in /home/ubuntu/project/openpi/assets/pi05_libero/physical-intelligence/libero, skipping.
+INFO:root:Loaded norm stats from /home/ubuntu/.cache/openpi/openpi-assets/checkpoints/pi05_libero/assets/physical-intelligence/libero
+INFO:root:Creating server (host: instance-hk5ki7c7-main, ip: 127.0.1.1)
+INFO:websockets.server:server listening on 0.0.0.0:8000
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 59400) opened
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 59400) closed
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46808) opened
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46810) opened
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46826) opened
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46828) opened
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46838) opened
+INFO:websockets.server:connection open
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46846) opened
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46828) closed
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46846) closed
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46838) closed
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46808) closed
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46810) closed
+INFO:openpi.serving.websocket_policy_server:Connection from ('127.0.0.1', 46826) closed
