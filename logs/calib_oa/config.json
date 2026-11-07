@@ -1,0 +1,14 @@
+{
+  "suite": "obstacle_avoidance",
+  "arm": "calibration",
+  "threshold": NaN,
+  "seed": 0,
+  "max_steps": 520,
+  "terminate": false,
+  "dummy": false,
+  "name": "calib_oa",
+  "n_samples": 4,
+  "tasks": "4,9,14",
+  "episodes": 10,
+  "workers": 6
+}

@@ -1,0 +1,39 @@
+{
+  "frozen": true,
+  "source_run": "calib_oa",
+  "calibration_tasks": [
+    "obstacle_avoidance:4",
+    "obstacle_avoidance:9",
+    "obstacle_avoidance:14"
+  ],
+  "n_episodes": 30,
+  "n_scores": 3090,
+  "monitor": {
+    "name": "stac_progress",
+    "threshold": Infinity,
+    "n_samples": 4,
+    "weight": 0.6,
+    "stuck_window": 4,
+    "stuck_scale": 0.02,
+    "refuse_after": 3
+  },
+  "percentiles": {
+    "gentle": 90,
+    "medium": 75,
+    "strict": 50
+  },
+  "thresholds": {
+    "gentle": 0.415461,
+    "medium": 0.325597,
+    "strict": 0.21544
+  },
+  "score_min_median_max": [
+    0.0,
+    0.21544,
+    0.80161
+  ],
+  "calibration_rates": {
+    "violation_robot": 0.967,
+    "success_raw": 0.0
+  }
+}
