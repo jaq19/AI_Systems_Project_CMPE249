@@ -126,11 +126,15 @@ class DummyPolicy:
     def reset(self, instruction):
         self.instruction = instruction
 
-    def act(self, obs):
+    def _chunk(self):
         a = self.rng.normal(0, 0.05, size=(self.replan_steps * 2, self.dim))
         a[:, -1] = -1.0
-        self.last_chunk = a
-        return a[: self.replan_steps]
+        return a
+
+    def act(self, obs):
+        self.last_chunk = self._chunk()
+        return self.last_chunk[: self.replan_steps]
 
     def sample(self, obs=None, n=4):
-        return np.stack([self.act(obs) for _ in range(n)])
+        """Extra full chunks for the same observation; does not touch last_chunk."""
+        return np.stack([self._chunk() for _ in range(n)])

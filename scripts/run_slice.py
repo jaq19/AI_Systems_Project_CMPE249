@@ -66,11 +66,18 @@ def _worker(k, jobs, cfg, run_dir):
     else:
         from harness.policy import Pi05Policy
         policy = Pi05Policy()
+    monitor = None
+    if cfg["arm"] in ("watcher", "calibration"):
+        from vla_monitor.consistency import ConsistencyMonitor
+        thr = cfg["threshold"] if cfg["arm"] == "watcher" else float("inf")  # calibration: record only
+        if cfg["arm"] == "watcher" and not (thr == thr):                    # NaN guard
+            raise SystemExit("--arm watcher needs --threshold")
+        monitor = ConsistencyMonitor(thr, n_samples=cfg["n_samples"])
     path = os.path.join(run_dir, f"part_w{k}.jsonl")
     with open(path, "a") as f:
         for task, ep in jobs:
             r = run_episode(policy, cfg["suite"], task, ep, cfg["seed"],
-                            monitor=None, arm=cfg["arm"],
+                            monitor=monitor, arm=cfg["arm"],
                             threshold=cfg["threshold"],
                             max_env_steps=cfg["max_steps"],
                             terminate_on_violation=cfg["terminate"])
@@ -83,7 +90,8 @@ def _worker(k, jobs, cfg, run_dir):
             print(f"  [w{k}] task {task:2d} ep {ep:2d}: raw={r['success_raw']!s:5} "
                   f"robotviol@{r['first_violation_robot_step']:4d} "
                   f"knock={r['knocked']!s:5} "
-                  f"steps={r['steps']:3d} {r['seconds']:6.1f}s", flush=True)
+                  f"steps={r['steps']:3d} pauses={r['pauses']:3d} refused={r['refused']!s:5} "
+                  f"{r['seconds']:6.1f}s", flush=True)
 
 
 def summarize(rows, wall=None):
@@ -100,6 +108,11 @@ def summarize(rows, wall=None):
           f"violation(all pairs) {mean('violation'):.0%}   "
           f"knocked {sum(bool(r.get('knocked')) for r in rows) / n:.0%}")
     print(f"  mean seconds/episode (per worker) {secs:.0f}")
+    if any(r.get("monitor") for r in rows):
+        ref = sum(bool(r.get("refused")) for r in rows) / n
+        pz = sum(r.get("pauses", 0) for r in rows) / n
+        ms = sum(r.get("monitor_ms_per_step", 0) for r in rows) / n
+        print(f"  watcher: refused {ref:.0%}   pauses/episode {pz:.1f}   monitor ms/step {ms:.1f}")
     if wall:
         print(f"  wall {wall:.0f}s  ->  throughput {3600 * n / wall:.1f} episodes/hour")
 
@@ -110,7 +123,8 @@ def main():
     p.add_argument("--tasks", required=True, help="e.g. 0-3,5-8,10-13")
     p.add_argument("--episodes", type=int, default=2, help="per task")
     p.add_argument("--workers", type=int, default=3)
-    p.add_argument("--arm", default="control")
+    p.add_argument("--arm", default="control", choices=["control", "watcher", "calibration"])
+    p.add_argument("--n-samples", type=int, default=4, help="watcher: chunks sampled per policy call")
     p.add_argument("--threshold", type=float, default=float("nan"))
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--max-steps", type=int, default=520)
@@ -121,11 +135,13 @@ def main():
     p.add_argument("--out", default=os.path.join(ROOT, "logs"))
     a = p.parse_args()
 
+    if a.arm == "watcher" and a.threshold != a.threshold:
+        p.error("--arm watcher needs --threshold (from configs/thresholds.json)")
     run_dir = os.path.join(a.out, a.name)
     os.makedirs(run_dir, exist_ok=True)
     cfg = dict(suite=a.suite, arm=a.arm, threshold=a.threshold, seed=a.seed,
                max_steps=a.max_steps, terminate=a.terminate, dummy=a.dummy,
-               name=a.name)
+               name=a.name, n_samples=a.n_samples)
     json.dump({**cfg, "tasks": a.tasks, "episodes": a.episodes,
                "workers": a.workers}, open(os.path.join(run_dir, "config.json"), "w"),
               indent=2)

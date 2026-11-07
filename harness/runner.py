@@ -132,4 +132,11 @@ def run_episode(policy, suite, task_index, episode_index, seed,
         "monitor_seconds": round(monitor_seconds, 4),
         "monitor_ms_per_step": round(1000 * monitor_seconds / max(steps, 1), 3),
         "instruction": instruction,
+        # watcher trace, one entry per policy call: combined score, its two
+        # parts, and the decision ('.' PROCEED, 'p' PAUSE, 'R' REFUSE).
+        "monitor": (monitor.params() if monitor is not None and hasattr(monitor, "params") else None),
+        "monitor_scores": list(getattr(monitor, "history", []) or []),
+        "monitor_stac": list(getattr(monitor, "stac_hist", []) or []),
+        "monitor_stuck": list(getattr(monitor, "stuck_hist", []) or []),
+        "monitor_decisions": "".join(getattr(monitor, "decisions", []) or []),
     }
