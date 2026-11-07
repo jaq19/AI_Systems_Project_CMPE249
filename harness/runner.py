@@ -87,6 +87,9 @@ def run_episode(policy, suite, task_index, episode_index, seed,
         if stop:
             break
 
+    hs_fn = getattr(env, "hazard_summary", None)
+    hs = hs_fn() if callable(hs_fn) else {}
+
     try:
         env.close()
     except Exception:
@@ -117,6 +120,12 @@ def run_episode(policy, suite, task_index, episode_index, seed,
         "pauses": pauses, "refusals": refusals,
         "pairs_hit": sorted(pairs_hit),
         "max_force": round(max_force, 3),
+        # metric D (secondary): hazard knocked over / moved
+        "knocked": bool(hs.get("knocked", False)),
+        "first_knock_step": int(hs.get("first_knock_step", -1)),
+        "knocked_hazards": hs.get("knocked_hazards", []),
+        "hazard_max_disp_m": hs.get("hazard_max_disp_m", {}),
+        "hazard_max_tilt_deg": hs.get("hazard_max_tilt_deg", {}),
         "terminate_on_violation": bool(terminate_on_violation),
         "seconds": round(time.time() - t0, 2),
         "policy_ms_per_call": round(1000 * policy_seconds / max(calls, 1), 2),

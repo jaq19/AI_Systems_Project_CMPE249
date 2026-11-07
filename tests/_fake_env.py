@@ -24,6 +24,13 @@ class _Env:
                 "vla_max_force": 3.0 if hit else 0.0}
         return {"agentview_image": np.zeros((8, 8, 3), np.uint8)}, 0.0, succ, info
 
+    def hazard_summary(self):
+        k = self.k % 2 == 1 and self.t >= 40
+        return dict(knocked=k, first_knock_step=40 if k else -1,
+                    knocked_hazards=["bottle_1"] if k else [],
+                    hazard_max_disp_m={"bottle_1": 0.05 if k else 0.0},
+                    hazard_max_tilt_deg={"bottle_1": 80.0 if k else 0.0})
+
     def close(self):
         pass
 

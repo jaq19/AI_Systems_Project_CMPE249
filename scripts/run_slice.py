@@ -81,7 +81,8 @@ def _worker(k, jobs, cfg, run_dir):
             f.flush()
             os.fsync(f.fileno())
             print(f"  [w{k}] task {task:2d} ep {ep:2d}: raw={r['success_raw']!s:5} "
-                  f"paper={r['success_paper']!s:5} viol@{r['first_violation_step']:4d} "
+                  f"robotviol@{r['first_violation_robot_step']:4d} "
+                  f"knock={r['knocked']!s:5} "
                   f"steps={r['steps']:3d} {r['seconds']:6.1f}s", flush=True)
 
 
@@ -95,7 +96,9 @@ def summarize(rows, wall=None):
     print(f"  episodes {n}")
     print(f"  success_raw {mean('success_raw'):.0%}   success_paper {mean('success_paper'):.0%}"
           f"   success_paper_robot {mean('success_paper_robot'):.0%}")
-    print(f"  violation(all pairs) {mean('violation'):.0%}   violation(robot) {mean('violation_robot'):.0%}")
+    print(f"  violation(robot) [PRIMARY] {mean('violation_robot'):.0%}   "
+          f"violation(all pairs) {mean('violation'):.0%}   "
+          f"knocked {sum(bool(r.get('knocked')) for r in rows) / n:.0%}")
     print(f"  mean seconds/episode (per worker) {secs:.0f}")
     if wall:
         print(f"  wall {wall:.0f}s  ->  throughput {3600 * n / wall:.1f} episodes/hour")
