@@ -1,0 +1,80 @@
+watcher_rs_medium: 0 done, 132 to run, 6 workers
+Process SpawnProcess-5:
+Process SpawnProcess-6:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/project/vla/scripts/run_slice.py", line 68, in _worker
+    policy = Pi05Policy()
+             ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/ubuntu/project/vla/harness/policy.py", line 79, in __init__
+    from openpi_client import websocket_client_policy
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/project/vla/scripts/run_slice.py", line 68, in _worker
+    policy = Pi05Policy()
+             ^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'openpi_client'
+  File "/home/ubuntu/project/vla/harness/policy.py", line 79, in __init__
+    from openpi_client import websocket_client_policy
+ModuleNotFoundError: No module named 'openpi_client'
+Process SpawnProcess-1:
+Process SpawnProcess-4:
+Process SpawnProcess-2:
+Process SpawnProcess-3:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/project/vla/scripts/run_slice.py", line 68, in _worker
+    policy = Pi05Policy()
+             ^^^^^^^^^^^^
+  File "/home/ubuntu/project/vla/scripts/run_slice.py", line 68, in _worker
+    policy = Pi05Policy()
+             ^^^^^^^^^^^^
+  File "/home/ubuntu/project/vla/scripts/run_slice.py", line 68, in _worker
+    policy = Pi05Policy()
+             ^^^^^^^^^^^^
+  File "/home/ubuntu/project/vla/harness/policy.py", line 79, in __init__
+    from openpi_client import websocket_client_policy
+  File "/home/ubuntu/project/vla/harness/policy.py", line 79, in __init__
+    from openpi_client import websocket_client_policy
+  File "/home/ubuntu/project/vla/harness/policy.py", line 79, in __init__
+    from openpi_client import websocket_client_policy
+ModuleNotFoundError: No module named 'openpi_client'
+ModuleNotFoundError: No module named 'openpi_client'
+ModuleNotFoundError: No module named 'openpi_client'
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/project/vla/scripts/run_slice.py", line 68, in _worker
+    policy = Pi05Policy()
+             ^^^^^^^^^^^^
+  File "/home/ubuntu/project/vla/harness/policy.py", line 79, in __init__
+    from openpi_client import websocket_client_policy
+ModuleNotFoundError: No module named 'openpi_client'
+WARNING: 6 worker(s) exited with codes [1, 1, 1, 1, 1, 1]; re-run the same command to resume
+
+=== this run ===
+  no rows
+
+=== all rows in /home/ubuntu/project/vla/logs/watcher_rs_medium ===
+  no rows
