@@ -1,0 +1,10 @@
+control_rs         all collisions 126   by step 5:   0%   by 25:   0%   by 50:  40%   median step 55
+control_rs         L0  collisions  33   by step 5:   0%   by 25:   0%   by 50:  45%   median step 53
+control_rs         L1  collisions  46   by step 5:   0%   by 25:   0%   by 50:  46%   median step 52
+control_rs         L2  collisions  47   by step 5:   0%   by 25:   0%   by 50:  30%   median step 57
+
+watcher_rs_medium  all collisions 114   by step 5:   0%   by 25:   0%   by 50:  34%   median step 53
+watcher_rs_medium  L0  collisions  24   by step 5:   0%   by 25:   0%   by 50:  54%   median step 50
+watcher_rs_medium  L1  collisions  47   by step 5:   0%   by 25:   0%   by 50:  34%   median step 52
+watcher_rs_medium  L2  collisions  43   by step 5:   0%   by 25:   0%   by 50:  23%   median step 54
+
