@@ -1,0 +1,5 @@
+watcher_oa_medium        refusals 168: stuck-led 168 (100%)  mean parts at REFUSE: STAC 0.026 / stuck 0.335 (raw stuck 0.84)   | pauses  4858, cleared on next look  92%
+watcher_oa_stac_medium   refusals   1: stuck-led   0 (  0%)  mean parts at REFUSE: STAC 0.363 / stuck 0.000 (raw stuck 0.07)   | pauses  9141, cleared on next look 100%
+watcher_oa_strict        refusals 255: stuck-led 253 ( 99%)  mean parts at REFUSE: STAC 0.019 / stuck 0.260 (raw stuck 0.65)   | pauses  6626, cleared on next look  92%
+watcher_rs_medium        refusals  81: stuck-led  80 ( 99%)  mean parts at REFUSE: STAC 0.037 / stuck 0.333 (raw stuck 0.83)   | pauses  1607, cleared on next look  88%
+watcher_rs_strict        refusals 120: stuck-led 120 (100%)  mean parts at REFUSE: STAC 0.021 / stuck 0.259 (raw stuck 0.65)   | pauses  1683, cleared on next look  84%
