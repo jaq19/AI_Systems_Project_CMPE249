@@ -1,0 +1,2 @@
+STAC-only medium threshold: 0.357267
+03:50 watcher_rs_strict try 1: 132/132 episodes
