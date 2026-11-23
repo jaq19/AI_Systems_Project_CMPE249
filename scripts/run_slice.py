@@ -72,7 +72,7 @@ def _worker(k, jobs, cfg, run_dir):
         thr = cfg["threshold"] if cfg["arm"] == "watcher" else float("inf")  # calibration: record only
         if cfg["arm"] == "watcher" and not (thr == thr):                    # NaN guard
             raise SystemExit("--arm watcher needs --threshold")
-        monitor = ConsistencyMonitor(thr, n_samples=cfg["n_samples"])
+        monitor = ConsistencyMonitor(thr, n_samples=cfg["n_samples"], weight=cfg.get("weight", 0.6))
     path = os.path.join(run_dir, f"part_w{k}.jsonl")
     with open(path, "a") as f:
         for task, ep in jobs:
@@ -126,6 +126,7 @@ def main():
     p.add_argument("--arm", default="control", choices=["control", "watcher", "calibration"])
     p.add_argument("--n-samples", type=int, default=4, help="watcher: chunks sampled per policy call")
     p.add_argument("--threshold", type=float, default=float("nan"))
+    p.add_argument("--weight", type=float, default=0.6, help="watcher: STAC weight; 1.0 = STAC-only")
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--max-steps", type=int, default=520)
     p.add_argument("--terminate", action="store_true",
@@ -141,7 +142,7 @@ def main():
     os.makedirs(run_dir, exist_ok=True)
     cfg = dict(suite=a.suite, arm=a.arm, threshold=a.threshold, seed=a.seed,
                max_steps=a.max_steps, terminate=a.terminate, dummy=a.dummy,
-               name=a.name, n_samples=a.n_samples)
+               name=a.name, n_samples=a.n_samples, weight=a.weight)
     json.dump({**cfg, "tasks": a.tasks, "episodes": a.episodes,
                "workers": a.workers}, open(os.path.join(run_dir, "config.json"), "w"),
               indent=2)
