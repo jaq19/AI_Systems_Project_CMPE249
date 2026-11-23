@@ -1,0 +1,4 @@
+Mon Nov 23 08:36:44 UTC 2026
+STAC-only medium threshold: 0.357267
+03:50 watcher_rs_strict try 1: 132/132 episodes
+08:36 watcher_oa_stac_medium try 1: 360/360 episodes
