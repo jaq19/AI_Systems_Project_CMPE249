@@ -1,0 +1,21 @@
+Tue Nov 24 05:04:11 UTC 2026
+clips: 3/3
+==> docs/demo_caught_apple.txt <==
+no watcher: {'first_touch': 57, 'refused_at': -1, 'steps': 520}
+watcher take 1: {'first_touch': -1, 'refused_at': 70, 'steps': 70} caught 
+wrote docs/demo_caught_apple.mp4: 521 frames, 26.1 s
+
+==> docs/demo_caught_wine.txt <==
+no watcher: {'first_touch': 478, 'refused_at': -1, 'steps': 520}
+watcher take 1: {'first_touch': -1, 'refused_at': 110, 'steps': 110} caught 
+wrote docs/demo_caught_wine.mp4: 521 frames, 26.1 s
+
+==> docs/demo_fake_test.txt <==
+no watcher: {'first_touch': 30, 'refused_at': -1, 'steps': 30}
+watcher take 1: {'first_touch': 30, 'refused_at': -1, 'steps': 30}  missed
+wrote /tmp/fake.mp4: 31 frames, 1.6 s
+
+==> docs/demo_missed_book.txt <==
+no watcher: {'first_touch': 66, 'refused_at': -1, 'steps': 520}
+watcher take 1: {'first_touch': 15, 'refused_at': 80, 'steps': 80}  missed
+wrote docs/demo_missed_book.mp4: 521 frames, 26.1 s

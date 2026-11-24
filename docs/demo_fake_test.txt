@@ -1,0 +1,3 @@
+no watcher: {'first_touch': 30, 'refused_at': -1, 'steps': 30}
+watcher take 1: {'first_touch': 30, 'refused_at': -1, 'steps': 30}  missed
+wrote /tmp/fake.mp4: 31 frames, 1.6 s
