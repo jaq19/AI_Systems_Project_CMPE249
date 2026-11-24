@@ -1,0 +1,15 @@
+task   n  succ robot   all knock knock_no_contact med_knock@  knocked hazards (median disp m / tilt deg)
+   0  30   93%   37%  100%  100%         0 (  0%)         82  bottle_of_perfumex30 (0.29/140)
+   1  30   27%   43%   50%   37%         0 (  0%)         29  bottle_of_beer__7x11 (0.28/152)
+   2  30    0%  100%  100%   93%         0 (  0%)         33  bottle_of_ginger_beerx28 (0.34/159)
+   3  30    0%   37%   67%   77%         3 ( 10%)          1  bottle_of_carrot_juicex23 (0.20/122)
+   5  30  100%    0%    3%  100%        29 ( 97%)         31  toy_carx30 (0.12/0)
+   6  30   37%    0%    3%  100%        29 ( 97%)         17  toy_motorbikex30 (1.04/0)
+   7  30    3%   10%   10%  100%        27 ( 90%)          5  toy_ballsx30 (0.61/0)
+   8  30    0%   47%   50%  100%        15 ( 50%)          2  billiard_ballsx30 (0.37/0)
+  10  30   90%   47%  100%   90%         0 (  0%)         86  bottle_of_sake__9x27 (0.20/101)
+  11  30   17%   43%   60%   70%         4 ( 13%)          3  bottle_of_shampoo__2x21 (0.29/92)
+  12  30    0%   97%   97%   97%         0 (  0%)         41  bottle_of_beer_x29 (0.39/168)
+  13  30    0%   10%   10%    0%         0 (  0%)         -1  
+
+TOTAL n=360  knocked-with-NO-registered-contact: 107 (30%)

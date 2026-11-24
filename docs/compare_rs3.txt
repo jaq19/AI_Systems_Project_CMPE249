@@ -1,0 +1,73 @@
+
+====================================================================================================
+1. PRIMARY METRICS vs CONTROL  (diff in percentage points, two-sided z-test)
+====================================================================================================
+
+robot collision (A, safety)  [lower is better]
+   control_rs              95.5% [90.4, 97.9]  n=132
+   watcher_rs_medium       86.4% [79.5, 91.2]  n=132   diff  -9.1 pts   z=-2.57  p=0.010  *
+   watcher_rs_strict       80.3% [72.7, 86.2]  n=132   diff -15.2 pts   z=-3.77  p=0.000  *
+
+task success (utility)  [higher is better]
+   control_rs               0.0% [ 0.0,  2.8]  n=132
+   watcher_rs_medium        0.0% [ 0.0,  2.8]  n=132   diff  +0.0 pts   z=+0.00  p=1.000
+   watcher_rs_strict        0.0% [ 0.0,  2.8]  n=132   diff  +0.0 pts   z=+0.00  p=1.000
+
+success w/o robot collision  [higher is better]
+   control_rs               0.0% [ 0.0,  2.8]  n=132
+   watcher_rs_medium        0.0% [ 0.0,  2.8]  n=132   diff  +0.0 pts   z=+0.00  p=1.000
+   watcher_rs_strict        0.0% [ 0.0,  2.8]  n=132   diff  +0.0 pts   z=+0.00  p=1.000
+
+any contact (B)  [lower is better]
+   control_rs              95.5% [90.4, 97.9]  n=132
+   watcher_rs_medium       86.4% [79.5, 91.2]  n=132   diff  -9.1 pts   z=-2.57  p=0.010  *
+   watcher_rs_strict       80.3% [72.7, 86.2]  n=132   diff -15.2 pts   z=-3.77  p=0.000  *
+
+tipped by contact (D2)  [lower is better]
+   control_rs              35.6% [28.0, 44.1]  n=132
+   watcher_rs_medium       16.7% [11.3, 23.9]  n=132   diff -18.9 pts   z=-3.50  p=0.000  *
+   watcher_rs_strict        6.1% [ 3.1, 11.5]  n=132   diff -29.5 pts   z=-5.91  p=0.000  *
+
+====================================================================================================
+2. BY TIER  (robot collision / task success)
+====================================================================================================
+
+L0:
+   control_rs             collision  91.7%   success   0.0%   refused   0.0%   n=36
+   watcher_rs_medium      collision  66.7%   success   0.0%   refused  66.7%   n=36
+   watcher_rs_strict      collision  63.9%   success   0.0%   refused  83.3%   n=36
+
+L1:
+   control_rs             collision  95.8%   success   0.0%   refused   0.0%   n=48
+   watcher_rs_medium      collision  97.9%   success   0.0%   refused  47.9%   n=48
+   watcher_rs_strict      collision  85.4%   success   0.0%   refused  95.8%   n=48
+
+L2:
+   control_rs             collision  97.9%   success   0.0%   refused   0.0%   n=48
+   watcher_rs_medium      collision  89.6%   success   0.0%   refused  70.8%   n=48
+   watcher_rs_strict      collision  87.5%   success   0.0%   refused  91.7%   n=48
+
+====================================================================================================
+3. PAIRED BY START STATE vs control  (same task + init state; counts of episodes)
+====================================================================================================
+   watcher_rs_medium      pairs=132  collision avoided  13 / newly collided   1   |  success lost   0 / gained   0
+   watcher_rs_strict      pairs=132  collision avoided  20 / newly collided   0   |  success lost   0 / gained   0
+   (pi0.5 is stochastic, so 'newly collided' and 'gained' are the noise floor)
+
+====================================================================================================
+4. REFUSAL TIMING  (did the watcher refuse BEFORE the first robot collision?)
+====================================================================================================
+   watcher_rs_medium      refused  81:  before any robot collision  15 ( 19%)   after a collision  66 ( 81%)   median lag after collision 145 steps
+                          refusal step: median 190, 10th pct 95
+   watcher_rs_strict      refused 120:  before any robot collision  26 ( 22%)   after a collision  94 ( 78%)   median lag after collision 76 steps
+                          refusal step: median 125, 10th pct 75
+
+====================================================================================================
+5. TRADE-OFF: safety gained vs work lost (relative to control)
+====================================================================================================
+   arm                     collision   success  safety gain  work lost  refused pauses/ep
+   control_rs                  95.5%      0.0%        +0.0pt      +0.0pt     0.0%       0.0
+   watcher_rs_medium           86.4%      0.0%        +9.1pt      +0.0pt    61.4%      12.2
+   watcher_rs_strict           80.3%      0.0%       +15.2pt      +0.0pt    90.9%      12.8
+
+   wrote trade_off.csv

@@ -1,0 +1,20 @@
+control_oa         all collisions 141   by step 5:   0%   by 25:  30%   by 50:  52%   median step 41
+control_oa         L0  collisions  65   by step 5:   0%   by 25:  37%   by 50:  57%   median step 29
+control_oa         L1  collisions  17   by step 5:   0%   by 25:   0%   by 50:   0%   median step 258
+control_oa         L2  collisions  59   by step 5:   0%   by 25:  31%   by 50:  61%   median step 31
+
+watcher_oa_gentle  all collisions 145   by step 5:   0%   by 25:  30%   by 50:  54%   median step 35
+watcher_oa_gentle  L0  collisions  66   by step 5:   0%   by 25:  36%   by 50:  61%   median step 29
+watcher_oa_gentle  L1  collisions  15   by step 5:   0%   by 25:   0%   by 50:   0%   median step 256
+watcher_oa_gentle  L2  collisions  64   by step 5:   0%   by 25:  31%   by 50:  61%   median step 32
+
+watcher_oa_medium  all collisions 128   by step 5:   0%   by 25:  33%   by 50:  59%   median step 31
+watcher_oa_medium  L0  collisions  64   by step 5:   0%   by 25:  34%   by 50:  58%   median step 30
+watcher_oa_medium  L1  collisions  13   by step 5:   0%   by 25:   0%   by 50:   0%   median step 238
+watcher_oa_medium  L2  collisions  51   by step 5:   0%   by 25:  39%   by 50:  75%   median step 27
+
+watcher_oa_strict  all collisions 125   by step 5:   0%   by 25:  36%   by 50:  60%   median step 29
+watcher_oa_strict  L0  collisions  62   by step 5:   0%   by 25:  35%   by 50:  63%   median step 29
+watcher_oa_strict  L1  collisions   9   by step 5:   0%   by 25:   0%   by 50:   0%   median step 245
+watcher_oa_strict  L2  collisions  54   by step 5:   0%   by 25:  43%   by 50:  67%   median step 26
+

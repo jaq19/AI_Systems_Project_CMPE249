@@ -1,0 +1,5 @@
+arm,collision,success,safety_gain_pts,work_lost_pts,refused,pauses_per_ep,n
+control_oa,0.3917,0.3056,0.0,0.0,0.0,0.0,360
+watcher_oa_gentle,0.4028,0.3056,-1.11,0.0,0.1222,8.76,360
+watcher_oa_medium,0.3556,0.2833,3.61,2.22,0.4667,13.49,360
+watcher_oa_strict,0.3472,0.225,4.44,8.06,0.7083,18.41,360

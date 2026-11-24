@@ -1,0 +1,13 @@
+{
+  "suite": "obstacle_avoidance",
+  "arm": "control",
+  "threshold": NaN,
+  "seed": 0,
+  "max_steps": 520,
+  "terminate": false,
+  "dummy": false,
+  "name": "control_oa_s0",
+  "tasks": "0-3",
+  "episodes": 3,
+  "workers": 6
+}

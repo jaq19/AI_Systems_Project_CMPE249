@@ -1,0 +1,29 @@
+episodes with watcher scores: 132   with a robot collision: 114
+
+==========================================================================================
+1. AUROC: does the score separate 'collision within H steps' from collision-free looks?
+==========================================================================================
+   (0.5 = no signal; > 0.5 = score higher before collisions; < 0.5 = LOWER before collisions)
+   H=  5  score  AUROC 0.447 [0.368, 0.528]   pos looks   114 (114 eps)   neg looks    223 (18 eps)   steps 35-100
+   H=  5  STAC   AUROC 0.485 [0.394, 0.566]   pos looks   114 (114 eps)   neg looks    223 (18 eps)   steps 35-100
+   H=  5  stuck  AUROC 0.401 [0.331, 0.473]   pos looks   114 (114 eps)   neg looks    223 (18 eps)   steps 35-100
+   H= 25  score  AUROC 0.438 [0.365, 0.511]   pos looks   570 (114 eps)   neg looks    247 (18 eps)   steps 25-95
+   H= 25  STAC   AUROC 0.459 [0.383, 0.522]   pos looks   570 (114 eps)   neg looks    247 (18 eps)   steps 25-95
+   H= 25  stuck  AUROC 0.458 [0.403, 0.522]   pos looks   570 (114 eps)   neg looks    247 (18 eps)   steps 25-95
+   H= 50  score  AUROC 0.436 [0.369, 0.491]   pos looks  1097 (114 eps)   neg looks    291 (18 eps)   steps 5-85
+   H= 50  STAC   AUROC 0.436 [0.368, 0.490]   pos looks  1097 (114 eps)   neg looks    291 (18 eps)   steps 5-85
+   H= 50  stuck  AUROC 0.505 [0.465, 0.552]   pos looks  1097 (114 eps)   neg looks    291 (18 eps)   steps 5-85
+
+==========================================================================================
+2. MEAN SCORE ALIGNED TO THE FIRST ROBOT COLLISION (step 0 = collision)
+==========================================================================================
+   collision-free episodes, all looks: mean score 0.187
+   score   -60:0.120   -40:0.134   -20:0.166    +0:0.201   +20:0.263   +40:0.207   +60:0.245
+   STAC    -60:0.180   -40:0.214   -20:0.265    +0:0.309   +20:0.336   +40:0.283   +60:0.343
+   stuck   -60:0.032   -40:0.014   -20:0.019    +0:0.038   +20:0.154   +40:0.093   +60:0.097
+
+==========================================================================================
+3. DID THE WATCHER FLAG BEFORE THE COLLISION?  (score > its arm's threshold)
+==========================================================================================
+   watcher_rs_medium    thr=0.326  flagged before collision: 67/114 (59%)   collision-free eps flagged before step 53: 13/18 (72%)
+   (if the two percentages are similar, a flag says nothing about an upcoming collision)

@@ -1,0 +1,20 @@
+
+H=5: per-bin AUROC (score / STAC / stuck), positives = looks within 5 steps of the first collision
+   steps   0- 24   0.228   0.228   0.665   (pos   41, neg   442)
+   steps  25- 49   0.434   0.434   0.779   (pos   33, neg  1105)
+   steps  50- 74   0.614   0.614   0.097   (pos   11, neg  1105)
+   steps  75- 99   0.672   0.672   0.273   (pos   14, neg  1104)
+   weighted   0.402   0.402   0.584   <- step-matched AUROC
+
+H=25: per-bin AUROC (score / STAC / stuck), positives = looks within 25 steps of the first collision
+   steps   0- 24   0.279   0.279   0.488   (pos  304, neg   884)
+   steps  25- 49   0.420   0.420   0.774   (pos   53, neg  1105)
+   steps  50- 74   0.620   0.620   0.497   (pos   83, neg  1105)
+   steps  75- 99   0.515   0.515   0.388   (pos   55, neg  1104)
+   steps 100-124   0.533   0.533   0.451   (pos   12, neg  1056)
+   steps 125-149   0.538   0.538   0.557   (pos   15, neg   849)
+   steps 175-199   0.513   0.513   0.529   (pos   14, neg   781)
+   steps 200-224   0.677   0.677   0.363   (pos   12, neg   752)
+   steps 225-249   0.550   0.550   0.211   (pos   25, neg   729)
+   steps 275-299   0.793   0.793   0.308   (pos   26, neg   704)
+   weighted   0.419   0.419   0.486   <- step-matched AUROC

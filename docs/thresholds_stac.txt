@@ -1,0 +1,22 @@
+{
+  "frozen": true,
+  "exploratory": "STAC-only watcher (weight 1.0); decided 2026-11-22 AFTER seeing the OA results",
+  "source_run": "calib_oa",
+  "n_episodes": 30,
+  "n_values": 3090,
+  "percentiles": {
+    "gentle": 90,
+    "medium": 75,
+    "strict": 50
+  },
+  "thresholds": {
+    "gentle": 0.531578,
+    "medium": 0.357267,
+    "strict": 0.192525
+  },
+  "stac_min_median_max": [
+    0.0,
+    0.192525,
+    0.73089
+  ]
+}

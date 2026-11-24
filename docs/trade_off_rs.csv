@@ -1,0 +1,3 @@
+arm,collision,success,safety_gain_pts,work_lost_pts,refused,pauses_per_ep,n
+control_rs,0.9545,0.0,0.0,0.0,0.0,0.0,132
+watcher_rs_medium,0.8636,0.0,9.09,0.0,0.6136,12.17,132
